@@ -1,4 +1,4 @@
-module github.com/qredo/apitool
+module gitlab.qredo.com/qredo-server/apitool
 
 go 1.17
 

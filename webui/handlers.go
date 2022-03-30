@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/qredo/apitool/defs"
+	"gitlab.qredo.com/qredo-server/apitool/defs"
 
 	"github.com/pkg/errors"
 
