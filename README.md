@@ -2,7 +2,7 @@
 ## Building
 to build you need to have a recent version of Go installed, go into apitool`s directory and type:
 
-`go build -o apitool gitlab.qredo.com/qredo-server/apitool/cmd/cli`
+`go build -o apitool github.com/qredo/apitool/cmd/cli`
 
 this will produce a binary called `apitool`
 
