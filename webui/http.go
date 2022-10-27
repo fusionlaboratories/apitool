@@ -9,9 +9,9 @@ import (
 )
 
 func Serve(port string) {
-	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 	router.Use(cors.Default())
+	gin.SetMode(gin.ReleaseMode)
 
 	router.GET("/", GetIndex)
 	router.POST("/sign", Sign)

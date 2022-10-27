@@ -5,7 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -69,7 +69,7 @@ func Send(c *gin.Context) {
 
 func processRequest(c *gin.Context) (*defs.Request, error) {
 	wsRequest := &webSignRequest{}
-	body, err := ioutil.ReadAll(c.Request.Body)
+	body, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		return nil, errors.New("body")
 	}
@@ -79,7 +79,7 @@ func processRequest(c *gin.Context) (*defs.Request, error) {
 	}
 
 	req := &defs.Request{
-		Timestamp: fmt.Sprintf("%v", time.Now().Unix()),
+		Timestamp: fmt.Sprintf("%v", time.Now().UnixNano()),
 		Method:    wsRequest.Method,
 		URL:       strings.TrimSpace(wsRequest.URL),
 		ApiKey:    strings.TrimSpace(wsRequest.ApiKey),

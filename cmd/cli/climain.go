@@ -44,7 +44,7 @@ func setupRequest(req *defs.Request) error {
 	if *flagTimestamp != "" {
 		req.Timestamp = strings.TrimSpace(*flagTimestamp)
 	} else {
-		req.Timestamp = fmt.Sprintf("%v", time.Now().Unix())
+		req.Timestamp = fmt.Sprintf("%v", time.Now().UnixNano())
 	}
 
 	req.ApiKey = strings.TrimSpace(*flagAPIKey)
