@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"gitlab.qredo.com/qredo-server/apitool/defs"
-	"gitlab.qredo.com/qredo-server/apitool/webui"
+	"github.com/qredo/apitool/defs"
+	"github.com/qredo/apitool/webui"
 
 	"github.com/pkg/errors"
 )
