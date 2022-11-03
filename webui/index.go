@@ -16,7 +16,7 @@ const indexHTML string = `<html>
 			"secret" : form.apiSecret.value,
             "url"    : form.url.value,
 			"method" : form.method_select.value,
-            "body"   : form.body.value
+            "body"   : btoa(form.body.value)
         }
 		fetch('http://localhost:4569/sign', {
 			method: 'POST',
@@ -36,7 +36,7 @@ const indexHTML string = `<html>
 			"secret" : form.apiSecret.value,
             "url"    : form.url.value,
 			"method" : form.method_select.value,
-            "body"   : form.body.value
+            "body"   : btoa(form.body.value)
         }
 		fetch('http://localhost:4569/send', {
 			method: 'POST',

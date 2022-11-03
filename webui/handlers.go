@@ -18,11 +18,11 @@ import (
 )
 
 type webSignRequest struct {
-	Method string          `json:"method"`
-	URL    string          `json:"url"`
-	Body   json.RawMessage `json:"body"`
-	ApiKey string          `json:"api_key"`
-	Secret string          `json:"secret"`
+	Method string `json:"method"`
+	URL    string `json:"url"`
+	Body   string `json:"body"`
+	ApiKey string `json:"api_key"`
+	Secret string `json:"secret"`
 }
 
 type WebSignResponse struct {
@@ -78,12 +78,17 @@ func processRequest(c *gin.Context) (*defs.Request, error) {
 		return nil, err
 	}
 
+	var decoded []byte
+	decoded, err = base64.URLEncoding.DecodeString(wsRequest.Body)
+	if err != nil {
+		return nil, err
+	}
 	req := &defs.Request{
 		Timestamp: fmt.Sprintf("%v", time.Now().UnixNano()),
 		Method:    wsRequest.Method,
 		URL:       strings.TrimSpace(wsRequest.URL),
 		ApiKey:    strings.TrimSpace(wsRequest.ApiKey),
-		Body:      wsRequest.Body,
+		Body:      decoded,
 	}
 
 	if err = req.Validate(); err != nil {
