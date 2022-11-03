@@ -79,9 +79,11 @@ func processRequest(c *gin.Context) (*defs.Request, error) {
 	}
 
 	var decoded []byte
-	decoded, err = base64.URLEncoding.DecodeString(wsRequest.Body)
-	if err != nil {
-		return nil, err
+	if len(wsRequest.Body) > 1 {
+		decoded, err = base64.URLEncoding.DecodeString(wsRequest.Body)
+		if err != nil {
+			return nil, err
+		}
 	}
 	req := &defs.Request{
 		Timestamp: fmt.Sprintf("%v", time.Now().UnixNano()),
