@@ -79,7 +79,7 @@ func processRequest(c *gin.Context) (*defs.Request, error) {
 	}
 
 	var decoded []byte
-	if len(wsRequest.Body) > 1 {
+	if len(wsRequest.Body) > 1 && (wsRequest.Method == "POST" || wsRequest.Method == "PUT" || wsRequest.Method == "PATCH") {
 		decoded, err = base64.URLEncoding.DecodeString(wsRequest.Body)
 		if err != nil {
 			return nil, err
