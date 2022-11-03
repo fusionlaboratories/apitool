@@ -18,11 +18,11 @@ import (
 )
 
 type webSignRequest struct {
-	Method string `json:"method"`
-	URL    string `json:"url"`
-	Body   []byte `json:"body"`
-	ApiKey string `json:"api_key"`
-	Secret string `json:"secret"`
+	Method string          `json:"method"`
+	URL    string          `json:"url"`
+	Body   json.RawMessage `json:"body"`
+	ApiKey string          `json:"api_key"`
+	Secret string          `json:"secret"`
 }
 
 type WebSignResponse struct {
